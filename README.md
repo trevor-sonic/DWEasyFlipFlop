@@ -4,7 +4,7 @@ What for? You need call 2 functions periodically with different intervals withou
 Let's say function1 (flip) will be triggered at the beginning and 300 millisecondes function2 will fired for 10 millisecondes ... end so on.
 
 How? Library is very simple to use; 
-+You define delays 
++Define delays for each task/functions 
 +Define callback functions (functions will be fired after millisecondes set) 
 +Put the flipflop loop (engine) in arduino loop function
 
