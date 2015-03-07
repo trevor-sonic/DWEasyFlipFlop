@@ -6,6 +6,6 @@ Let's say function1 (flip) will be triggered at the beginning and 300 millisecon
 How? Library is very simple to use; 
 +Define delays for each task/functions 
 +Define callback functions (functions will be fired after millisecondes set) 
-+Put the flipflop loop (engine) in arduino loop function
++Put the flipflop.loop() instance of engin in Arduino loop() function
 
 That's all, continue programming in ease.
