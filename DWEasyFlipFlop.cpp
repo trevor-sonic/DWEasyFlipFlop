@@ -28,8 +28,8 @@
 DWEasyFlipFlop::DWEasyFlipFlop()
 {
 	_currStatus	=	STATUS_FLOP;
-	_flipDelay	=	100;
-	_flopDelay	=	400;
+	_flipDelay	=	200;
+	_flopDelay	=	600;
 	_lastMillis	=	millis();
 	_running	=	false;
 	_flipEnable	=	true;
