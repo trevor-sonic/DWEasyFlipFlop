@@ -14,7 +14,7 @@
 // 				dejaWorks
 //
 // Date			06/03/15 17:10
-// Version		0.1
+// Version		0.2
 //
 // Copyright	Trevor D. BEYDAG 2015
 // License	    MIT
@@ -31,7 +31,9 @@ DWEasyFlipFlop::DWEasyFlipFlop()
 	_flipDelay	=	100;
 	_flopDelay	=	400;
 	_lastMillis	=	millis();
-
+	_running	=	false;
+	_flipEnable	=	true;
+	_flopEnable	=	true;
 
 	(void*)flipHandler;
 	(void*)flopHandler;
@@ -41,25 +43,43 @@ DWEasyFlipFlop::~DWEasyFlipFlop()
 {
 	// TODO Auto-generated destructor stub
 }
+void DWEasyFlipFlop::start()
+{
+	_currStatus	=	STATUS_FLOP;
+	_lastMillis	=	millis();
+	_running	=	true;
+}
+void DWEasyFlipFlop::stop()
+{
+	_running	=	false;
+}
 void DWEasyFlipFlop::loop()
 {
-    if (millis()>_lastMillis + _delay)
+    if ( _running && (millis() > _lastMillis + _delay) )
     {
         _lastMillis =   millis();
 
         if (_currStatus==STATUS_FLIP)
         {
-        	if(flopHandler)flopHandler();
-            _currStatus=STATUS_FLOP;
-            _delay	=_flopDelay;
+			if(flopHandler && _flopEnable)flopHandler();
+			_currStatus	=	STATUS_FLOP;
+			_delay		=	_flopDelay;
         }
         else
         {
-        	if(flipHandler)flipHandler();
-            _currStatus=STATUS_FLIP;
-            _delay	=_flipDelay;
+			if(flipHandler && _flipEnable)flipHandler();
+			_currStatus	=	STATUS_FLIP;
+			_delay		=	_flipDelay;
         }
     }
+}
+void DWEasyFlipFlop::setFlipEnable(bool isEnable)
+{
+    _flipEnable      =   isEnable;
+}
+void DWEasyFlipFlop::setFlopEnable(bool isEnable)
+{
+    _flopEnable      =   isEnable;
 }
 void DWEasyFlipFlop::setFlipDelay(unsigned long delay)
 {
