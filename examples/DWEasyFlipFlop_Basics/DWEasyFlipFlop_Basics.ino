@@ -16,7 +16,7 @@
 // 				dejaWorks
 //
 // Date			06/03/15 17:10
-// Version		0.1
+// Version		0.2
 //
 // Copyright	Trevor D. BEYDAG 2015
 // License	    MIT
@@ -43,6 +43,8 @@ void setup()
 	myFlipFlop.setFlopDelay(800);
 // Set Flop call back function (the function will be called after desigred ms delay)
 	myFlipFlop.setFlopHandler(flop);
+// Start flip flop	
+	myFlipFlop.start();	
 
 }
 void loop()
