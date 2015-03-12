@@ -14,7 +14,7 @@
 // 				dejaWorks
 //
 // Date			06/03/15 17:10
-// Version		0.1
+// Version		0.2
 //
 // Copyright	Trevor D. BEYDAG 2015
 // License	    MIT
@@ -45,13 +45,20 @@ class DWEasyFlipFlop
 		unsigned long getFlopDelay	();
 		void setFlipHandler	( callbackFunction theFunction);
 		void setFlopHandler	( callbackFunction theFunction);
+		void setFlipEnable(bool isEnable);
+		void setFlopEnable(bool isEnable);
+		void stop();
+		void start();
 
 	private:
+		bool			_running;
 		bool			_currStatus;
 		unsigned long 	_lastMillis;
 		unsigned long  	_delay;
 		unsigned long  	_flipDelay;
 		unsigned long  	_flopDelay;
+		bool 			_flipEnable;
+		bool 			_flopEnable;
 		void (*flipHandler)(void);
 		void (*flopHandler)(void);
 };
